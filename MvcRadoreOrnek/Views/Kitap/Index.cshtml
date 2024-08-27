@@ -1,0 +1,53 @@
+﻿@model IEnumerable<MvcRadoreOrnek.Models.Kitap>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Kitap Listesi</h1>
+
+<p>
+    <a asp-action="addBook">Yeni Kitap Ekle</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.kitapAdi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fiyat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sayfaSayisi)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.kitapAdi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fiyat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sayfaSayisi)
+            </td>
+            <td>
+                    @Html.ActionLink("Güncelle", "Update", new {  id = item.Id  }) |
+                    @Html.ActionLink("Detay", "GetKitap", new {  id=item.Id  }) |
+                    @Html.ActionLink("Sil", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
